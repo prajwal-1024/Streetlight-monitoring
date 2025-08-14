@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streetlight Backup System Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1><i class="fas fa-lightbulb"></i> Streetlight Backup System</h1>
+            </div>
+            <div class="user-info">
+                <span class="connection-status">
+                    <span class="status-indicator connected"></span> Connected
+                </span>
+                <div class="user">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Admin</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="content">
+                <div class="dashboard-header">
+                    <h2>Streetlight System Overview</h2>
+                    <div class="dashboard-actions">
+                        <button id="refreshData" class="btn primary"><i class="fas fa-sync"></i> Refresh</button>
+                        <select id="timeRange">
+                            <option value="day">Last 24 Hours</option>
+                            <option value="week">Last Week</option>
+                            <option value="month">Last Month</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-lightbulb"></i></div>
+                        <div class="stat-info">
+                            <h3>Active Streetlights</h3>
+                            <p class="stat-value" id="activeDevices">--</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="stat-info">
+                            <h3>Primary Bulbs Active</h3>
+                            <p class="stat-value" id="signalStrength">--</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-exchange-alt"></i></div>
+                        <div class="stat-info">
+                            <h3>Secondary Bulbs Active</h3>
+                            <p class="stat-value" id="temperature">--</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="stat-info">
+                            <h3>System Failures</h3>
+                            <p class="stat-value" id="batteryLevel">--</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Streetlight 1 charts -->
+                <div class="charts-container">
+                    <div class="chart-card">
+                        <h3>Streetlight 1 - Primary Bulb Status</h3>
+                        <div class="chart" id="activityChart">
+                            <canvas id="activityChartCanvas"></canvas>
+                            <div class="loading-placeholder">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <p>Loading chart data...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="charts-container">
+                    <div class="chart-card">
+                        <h3>Streetlight 1 - Secondary Bulb Status</h3>
+                        <div class="chart" id="sensorChart">
+                            <canvas id="sensorChartCanvas"></canvas>
+                            <div class="loading-placeholder">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <p>Loading chart data...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Streetlight 2 charts -->
+                <div class="charts-container">
+                    <div class="chart-card">
+                        <h3>Streetlight 2 - Primary Bulb Status</h3>
+                        <div class="chart" id="primary2Chart">
+                            <canvas id="primary2ChartCanvas"></canvas>
+                            <div class="loading-placeholder">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <p>Loading chart data...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="charts-container">
+                    <div class="chart-card">
+                        <h3>Streetlight 2 - Secondary Bulb Status</h3>
+                        <div class="chart" id="secondary2Chart">
+                            <canvas id="secondary2ChartCanvas"></canvas>
+                            <div class="loading-placeholder">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <p>Loading chart data...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 Automatic Streetlight Backup System. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact</a>
+            </div>
+        </footer>
+    </div>
+
+    <div class="error-modal" id="errorModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-exclamation-triangle"></i> Connection Error</h3>
+                <span class="close-modal" id="closeModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p id="errorMessage">Unable to connect to ThingSpeak. Please check your connection and try again.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn primary" id="retryButton">Retry</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html> 
