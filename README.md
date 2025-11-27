@@ -1,27 +1,23 @@
-# ThingSpace Data Visualization Project
 
+Streetlight Monitoring and Backup system
 This project fetches data from ThingSpace API and displays it with a clean, modern UI.
 
-## API Keys
-- Read API Key: AQ19W0MWRTLCUMX7
-- Write API Key: G8CTBDQ23S12WWS4
+Setup Instructions
 
-## Setup Instructions
-
-### Prerequisites
+Prerequisites
 - Node.js and npm
 - A modern web browser
 
-### Backend Setup
+Backend Setup
 1. Install Node.js from https://nodejs.org/
 2. Navigate to the backend directory
 3. Run `npm install`
 4. Run `npm start` to start the server
 
-### Frontend Setup
+Frontend Setup
 1. Navigate to the frontend directory
 2. Open index.html in your browser, or use a local server
 
-## Project Structure
+Project Structure
 - `/frontend` - Contains all frontend code (HTML, CSS, JavaScript)
 - `/backend` - Contains the server code for proxying API requests to ThingSpace 
