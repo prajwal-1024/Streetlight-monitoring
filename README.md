@@ -1,6 +1,6 @@
 
 Streetlight Monitoring and Backup system
-This project fetches data from ThingSpace API and displays it with a clean, modern UI.
+This project fetches data from ThingSpeak API and displays it with a clean, modern UI.
 
 Setup Instructions
 
@@ -20,4 +20,4 @@ Frontend Setup
 
 Project Structure
 - `/frontend` - Contains all frontend code (HTML, CSS, JavaScript)
-- `/backend` - Contains the server code for proxying API requests to ThingSpace 
+- `/backend` - Contains the server code for proxying API requests to ThingSpeak 
